@@ -1,21 +1,30 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, FlatList, TouchableHighlight } from 'react-native';
+import { Video } from 'expo-av';
+import { fetchMovies } from './services/fetchMovies';
+import { fetchPlayout } from './services/fetchPlayout';
+import { purchaseMovie } from './services/purchaseMovie';
+import { MoviesList } from './views/MoviesList';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Welcome to React Native @ Sky!</Text>
-      </View>
-    );
-  }
-}
+export const App = () => (
+  <View style={styles.background}>
+    <View style={styles.container}>
+      <MoviesList />
+    </View>
+  </View>
+);
+
+export default App;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  background: {
+    backgroundColor: 'pink',
+    flex: 1
   },
+  container: {
+    maxWidth: 800
+  },
+  text: {
+    color: 'black'
+  }
 });
