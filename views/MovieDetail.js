@@ -61,7 +61,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 16,
-    alignItems: 'center'
+    alignItems: 'center',
+    marginTop: 8
   },
   movieInfoContainer: {
     flex: 1,
@@ -84,7 +85,8 @@ const styles = StyleSheet.create({
   },
   movieTitle: {
     color: 'black',
-    fontSize: 25
+    fontSize: 25,
+    flexShrink: 2
   },
   text: {
     color: 'black',
