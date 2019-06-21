@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { StyleSheet, Text, FlatList, TouchableWithoutFeedback, View, Image } from 'react-native';
 import { fetchMovies } from '../services/fetchMovies';
 import { useDimensions } from '../hooks/useDimensions';
@@ -12,14 +12,13 @@ export const TitleValueText = ({ title, value }) => (
 
 export const MoviesListItem = ({ movie, navigation }) => {
   const dimensions = useDimensions();
+  const onPress = () =>
+    navigation.navigate('MovieDetail', {
+      movie
+    });
+
   return (
-    <TouchableWithoutFeedback
-      onPress={() =>
-        navigation.navigate('MovieDetail', {
-          movie
-        })
-      }
-    >
+    <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.container}>
         <Image
           style={{ flex: 1, height: dimensions.window.height / 3 }}

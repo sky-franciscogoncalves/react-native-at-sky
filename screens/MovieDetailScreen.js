@@ -1,17 +1,13 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { MovieDetail } from '../views/MovieDetail';
+import { BackgroundStyles } from './BackgroundStyles';
 
 export class MovieDetailScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Detail'
-  };
-
   static navigationOptions = ({ navigation }) => {
     const movie = navigation.getParam('movie');
-    const title = movie && movie.title;
     return {
-      title
+      title: movie && movie.title
     };
   };
 
@@ -19,22 +15,9 @@ export class MovieDetailScreen extends React.Component {
     const movie = this.props.navigation.getParam('movie');
 
     return (
-      <View style={styles.background}>
-        <MovieDetail movie={movie} />
+      <View style={BackgroundStyles.container}>
+        <MovieDetail movie={movie} navigation={this.props.navigation} />
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  background: {
-    backgroundColor: '#f9f9f9',
-    flex: 1
-  },
-  container: {
-    // maxWidth: 800
-  },
-  text: {
-    color: 'black'
-  }
-});

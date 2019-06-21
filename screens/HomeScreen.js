@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { MoviesList } from '../views/MoviesList';
+import { BackgroundStyles } from './BackgroundStyles';
 
 export class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -9,24 +10,9 @@ export class HomeScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.background}>
-        <View style={styles.container}>
-          <MoviesList navigation={this.props.navigation} />
-        </View>
+      <View style={BackgroundStyles.container}>
+        <MoviesList navigation={this.props.navigation} />
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  background: {
-    backgroundColor: '#f9f9f9',
-    flex: 1
-  },
-  container: {
-    // maxWidth: 800
-  },
-  text: {
-    color: 'black'
-  }
-});

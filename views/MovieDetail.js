@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, TouchableHighlight, View, Image } from 'react-native';
 import { useDimensions } from '../hooks/useDimensions';
+import { Button } from './Button';
+import { purchaseMovie, hasEntitlementForId } from '../services/purchaseMovie';
+import { fetchPlayout } from '../services/fetchPlayout';
 
 export const TitleValueText = ({ title, value }) => (
   <View style={styles.titleValueTextContainer}>
@@ -9,8 +12,26 @@ export const TitleValueText = ({ title, value }) => (
   </View>
 );
 
-export const MovieDetail = ({ movie }) => {
+export const MovieDetail = ({ movie, navigation }) => {
   const dimensions = useDimensions();
+  const [movieIsBought, setMovieIsBought] = useState(false);
+
+  useEffect(() => {
+    hasEntitlementForId(movie.id).then(setMovieIsBought);
+  }, []);
+
+  const onPress = async () => {
+    if (movieIsBought) {
+      const playoutURI = await fetchPlayout(movie.id);
+      navigation.navigate('MoviePlayer', {
+        playoutURI
+      });
+    } else {
+      await purchaseMovie(movie.id);
+      hasEntitlementForId(movie.id).then(setMovieIsBought);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Image
@@ -19,7 +40,10 @@ export const MovieDetail = ({ movie }) => {
         source={{ uri: movie.poster }}
       />
       <View style={styles.movieInfoContainer}>
-        <Text style={styles.movieTitle}>{movie.title}</Text>
+        <View style={styles.titleBuyContainer}>
+          <Text style={styles.movieTitle}>{movie.title}</Text>
+          <Button text={movieIsBought ? 'Play' : 'Buy'} onPress={onPress} />
+        </View>
         <TitleValueText title="Genre" value={movie.genre.join(', ')} />
         <TitleValueText title="Directors" value={movie.directors} />
         <TitleValueText title="Actors" value={movie.actors.join(', ')} />
@@ -31,8 +55,13 @@ export const MovieDetail = ({ movie }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
-    marginVertical: 16
+    flexDirection: 'column'
+  },
+  titleBuyContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 16,
+    alignItems: 'center'
   },
   movieInfoContainer: {
     flex: 1,
@@ -55,8 +84,7 @@ const styles = StyleSheet.create({
   },
   movieTitle: {
     color: 'black',
-    fontSize: 25,
-    marginBottom: 16
+    fontSize: 25
   },
   text: {
     color: 'black',
