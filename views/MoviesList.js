@@ -3,14 +3,14 @@ import { StyleSheet, Text, FlatList, TouchableHighlight, SafeAreaView } from 're
 import { fetchMovies } from '../services/fetchMovies';
 import { MoviesListItem } from './MoviesListItem';
 
-export const MoviesList = () => {
+export const MoviesList = ({ navigation }) => {
   const [movies, setMovies] = useState(undefined);
 
   useEffect(() => {
     fetchMovies().then(movies => setMovies(movies));
   }, []);
 
-  const renderItem = ({ item }) => <MoviesListItem movie={item} />;
+  const renderItem = ({ item }) => <MoviesListItem movie={item} navigation={navigation} />;
   const keyExtractor = m => m.id;
 
   return (

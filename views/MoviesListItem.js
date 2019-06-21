@@ -10,10 +10,16 @@ export const TitleValueText = ({ title, value }) => (
   </View>
 );
 
-export const MoviesListItem = ({ movie }) => {
+export const MoviesListItem = ({ movie, navigation }) => {
   const dimensions = useDimensions();
   return (
-    <TouchableWithoutFeedback onPress={() => {}}>
+    <TouchableWithoutFeedback
+      onPress={() =>
+        navigation.navigate('MovieDetail', {
+          movie
+        })
+      }
+    >
       <View style={styles.container}>
         <Image
           style={{ flex: 1, height: dimensions.window.height / 3 }}
@@ -22,9 +28,7 @@ export const MoviesListItem = ({ movie }) => {
         />
         <View style={styles.movieInfoContainer}>
           <Text style={styles.movieTitle}>{movie.title}</Text>
-          <TitleValueText title="Genre" value={movie.genre.join(', ')} />
-          <TitleValueText title="Directors" value={movie.directors} />
-          <TitleValueText title="Actors" value={movie.actors.join(', ')} />
+          <Text style={styles.arrow}> > </Text>
         </View>
       </View>
     </TouchableWithoutFeedback>
@@ -39,30 +43,17 @@ const styles = StyleSheet.create({
   },
   movieInfoContainer: {
     flex: 1,
-    flexDirection: 'column',
-    flexWrap: 'wrap',
-    marginHorizontal: 16
-  },
-  titleValueTextContainer: {
     flexDirection: 'row',
-    marginBottom: 16
-  },
-  titleText: {
-    color: 'black',
-    width: 100
-  },
-  valueText: {
-    flex: 1,
-    flexWrap: 'wrap',
-    color: 'black'
+    marginHorizontal: 16,
+    justifyContent: 'space-between',
+    alignContent: 'center'
   },
   movieTitle: {
     color: 'black',
-    fontSize: 25,
-    marginBottom: 16
+    fontSize: 23
   },
-  text: {
+  arrow: {
     color: 'black',
-    marginBottom: 16
+    fontSize: 23
   }
 });

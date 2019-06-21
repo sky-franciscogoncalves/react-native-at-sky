@@ -1,30 +1,16 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList, TouchableHighlight } from 'react-native';
-import { Video } from 'expo-av';
-import { fetchMovies } from './services/fetchMovies';
-import { fetchPlayout } from './services/fetchPlayout';
-import { purchaseMovie } from './services/purchaseMovie';
-import { MoviesList } from './views/MoviesList';
+import { HomeScreen } from './screens/HomeScreen';
+import { MovieDetailScreen } from './screens/MovieDetailScreen';
 
-export const App = () => (
-  <View style={styles.background}>
-    <View style={styles.container}>
-      <MoviesList />
-    </View>
-  </View>
-);
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 
-export default App;
-
-const styles = StyleSheet.create({
-  background: {
-    backgroundColor: '#f9f9f9',
-    flex: 1
+const AppNavigator = createStackNavigator({
+  Home: {
+    screen: HomeScreen
   },
-  container: {
-    maxWidth: 800
-  },
-  text: {
-    color: 'black'
+  MovieDetail: {
+    screen: MovieDetailScreen
   }
 });
+
+export default createAppContainer(AppNavigator);
