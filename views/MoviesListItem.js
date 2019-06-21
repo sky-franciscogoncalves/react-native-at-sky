@@ -40,7 +40,8 @@ const styles = StyleSheet.create({
   movieInfoContainer: {
     flex: 1,
     flexDirection: 'column',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    marginHorizontal: 16
   },
   titleValueTextContainer: {
     flexDirection: 'row',
@@ -51,6 +52,8 @@ const styles = StyleSheet.create({
     width: 100
   },
   valueText: {
+    flex: 1,
+    flexWrap: 'wrap',
     color: 'black'
   },
   movieTitle: {

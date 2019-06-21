@@ -18,7 +18,7 @@ export default App;
 
 const styles = StyleSheet.create({
   background: {
-    backgroundColor: 'pink',
+    backgroundColor: '#f9f9f9',
     flex: 1
   },
   container: {
