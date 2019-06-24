@@ -321,52 +321,6 @@
       "directors": "David Kerr",
       "actors": ["Rowan Atkinson", "Olga Kurylenko", "Ben Miller", "Jake Lacy", "Emma Thompson"],
       "id": "johnny-english"
-    },
-    {
-      "title": "Skyscraper",
-      "releasedate": "Fri, 13 Jul 2018 00:00:00 -0700",
-      "studio": "Universal Pictures",
-      "poster": "http://trailers.apple.com/trailers/universal/skyscraper/images/poster.jpg",
-      "poster_2x": "http://trailers.apple.com/trailers/universal/skyscraper/images/poster_2x.jpg",
-      "moviesite": "https://www.universalpictures.com/movies/skyscraper",
-      "location": "/trailers/universal/skyscraper/",
-      "rating": "PG-13",
-      "genre": ["Action and Adventure"],
-      "directors": "Rawson Marshall Thurber",
-      "actors": [
-        "Dwayne Johnson",
-        "Neve Campbell",
-        "Chin Han",
-        "Noah Taylor",
-        "Roland M\u00f8ller",
-        "Byron Mann",
-        " Pablo Schreiber",
-        "Hannah Quinlivan"
-      ],
-      "id": "skyscraper"
-    },
-    {
-      "title": "The House With A Clock In Its Walls",
-      "releasedate": "Fri, 21 Sep 2018 00:00:00 -0700",
-      "studio": "Universal Pictures",
-      "poster": "http://trailers.apple.com/trailers/universal/the-house-with-a-clock-in-its-walls/images/poster.jpg",
-      "poster_2x": "http://trailers.apple.com/trailers/universal/the-house-with-a-clock-in-its-walls/images/poster_2x.jpg",
-      "moviesite": "http://www.housewithaclock.com",
-      "location": "/trailers/universal/the-house-with-a-clock-in-its-walls/",
-      "rating": "PG",
-      "genre": ["Action and Adventure"],
-      "directors": "Eli Roth",
-      "actors": [
-        "Jack Black",
-        "Cate Blanchett",
-        "Owen Vaccaro",
-        "Kyle MacLachlan",
-        "Collen Camp",
-        "Ren\u00e9e Elise Goldsberry",
-        "Vanessa Anne Williams",
-        "Sunny Suljic"
-      ],
-      "id": "the-house-with-a-clock-in-its-walls"
     }
   ]
 }

@@ -4,6 +4,7 @@ import { useDimensions } from '../hooks/useDimensions';
 import { Button } from './Button';
 import { purchaseMovie, hasEntitlementForId } from '../services/purchaseMovie';
 import { fetchPlayout } from '../services/fetchPlayout';
+import { fetchMovie } from '../services/fetchMovies';
 
 export const TitleValueText = ({ title, value }) => (
   <View style={styles.titleValueTextContainer}>
@@ -12,13 +13,16 @@ export const TitleValueText = ({ title, value }) => (
   </View>
 );
 
-export const MovieDetail = ({ movie, navigation }) => {
+export const MovieDetail = ({ id, navigation }) => {
+  const movieId = navigation.getParam('id');
+  const [movie, setMovie] = useState({});
   const dimensions = useDimensions();
   const [movieIsBought, setMovieIsBought] = useState(false);
 
   useEffect(() => {
+    fetchMovie(movieId).then(movie => setMovie(movie));
     hasEntitlementForId(movie.id).then(setMovieIsBought);
-  }, []);
+  }, [movie]);
 
   const onPress = async () => {
     if (movieIsBought) {
@@ -44,9 +48,9 @@ export const MovieDetail = ({ movie, navigation }) => {
           <Text style={styles.movieTitle}>{movie.title}</Text>
           <Button text={movieIsBought ? 'Play' : 'Buy'} onPress={onPress} />
         </View>
-        <TitleValueText title="Genre" value={movie.genre.join(', ')} />
+        <TitleValueText title="Genre" value={movie.genre && movie.genre.join(', ')} />
         <TitleValueText title="Directors" value={movie.directors} />
-        <TitleValueText title="Actors" value={movie.actors.join(', ')} />
+        <TitleValueText title="Actors" value={movie.actors && movie.actors.join(', ')} />
       </View>
     </View>
   );

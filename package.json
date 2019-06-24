@@ -9,6 +9,7 @@
     "start-avd": "./start-avd.sh"
   },
   "dependencies": {
+    "@react-navigation/web": "^1.0.0-alpha.9",
     "expo": "^33.0.0",
     "expo-av": "~5.0.0",
     "react": "16.8.3",
