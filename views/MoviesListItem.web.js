@@ -19,14 +19,10 @@ export const MoviesListItem = ({ movie, navigation }) => {
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.container}>
         <Image
-          style={{ flex: 1, height: height / 3 }}
+          style={{ flex: 1, height: 270 }}
           resizeMode="contain"
           source={{ uri: movie.poster }}
         />
-        <View style={styles.movieInfoContainer}>
-          <Text style={styles.movieTitle}>{movie.title}</Text>
-          <Text style={styles.arrow}> ＞ </Text>
-        </View>
       </View>
     </TouchableWithoutFeedback>
   );
@@ -36,21 +32,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    marginVertical: 16
+    marginVertical: 16,
+    minWidth: 400
   },
-  movieInfoContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    marginHorizontal: 16,
-    justifyContent: 'space-between',
-    alignContent: 'center'
-  },
-  movieTitle: {
-    color: 'black',
-    fontSize: 23
-  },
-  arrow: {
-    color: 'black',
-    fontSize: 23
-  }
 });

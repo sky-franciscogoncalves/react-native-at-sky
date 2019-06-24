@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Dimensions } from 'react-native';
 
-const window = Dimensions.get('window');
-const screen = Dimensions.get('screen');
+const initialState = Dimensions.get('window');
 
 export const useDimensions = () => {
-  const [dimensions, setDimensions] = useState({
-    window,
-    screen
-  });
+  const [dimensions, setDimensions] = useState(initialState);
 
-  const onChange = ({ window, screen }) => {
-    setDimensions({ window, screen });
+  const onChange = ({ window }) => {
+    setDimensions(window);
   };
 
   useEffect(() => {

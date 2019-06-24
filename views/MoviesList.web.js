@@ -10,8 +10,15 @@ export const MoviesList = ({ navigation }) => {
     fetchMovies().then(movies => setMovies(movies));
   }, []);
 
-  const renderItem = ({ item }) => <MoviesListItem movie={item} navigation={navigation} />;
-  const keyExtractor = m => m.id;
-
-  return <FlatList data={movies} keyExtractor={keyExtractor} renderItem={renderItem} />
+  return (
+    <View style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
+      gridRowGap: '10px',
+      gridColumnGap: '10px',
+      backgroundColor: '#fff',
+    }}>
+      {movies.map((movie) => <MoviesListItem key={movie.id} movie={movie} navigation={navigation} />)}
+    </View>
+  );
 };

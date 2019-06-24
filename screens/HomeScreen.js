@@ -1,18 +1,19 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 import { MoviesList } from '../views/MoviesList';
 import { BackgroundStyles } from './BackgroundStyles';
 
-export class HomeScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Home'
-  };
-
-  render() {
-    return (
-      <View style={BackgroundStyles.container}>
-        <MoviesList navigation={this.props.navigation} />
-      </View>
-    );
-  }
+export const HomeScreen = ({ navigation }) => {
+  return (
+    <View style={BackgroundStyles.container}>
+      <MoviesList navigation={navigation} />
+    </View>
+  );
 }
+
+HomeScreen.navigationOptions = {
+  title: Platform.select({
+    web: 'Sky Cinema',
+    default: 'Home'
+  })
+};

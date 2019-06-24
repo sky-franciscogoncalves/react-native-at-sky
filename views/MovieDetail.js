@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, TouchableHighlight, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import { useDimensions } from '../hooks/useDimensions';
 import { Button } from './Button';
 import { purchaseMovie, hasEntitlementForId } from '../services/purchaseMovie';
 import { fetchPlayout } from '../services/fetchPlayout';
-import { fetchMovie } from '../services/fetchMovies';
 
 export const TitleValueText = ({ title, value }) => (
   <View style={styles.titleValueTextContainer}>
@@ -13,14 +12,11 @@ export const TitleValueText = ({ title, value }) => (
   </View>
 );
 
-export const MovieDetail = ({ id, navigation }) => {
-  const movieId = navigation.getParam('id');
-  const [movie, setMovie] = useState({});
-  const dimensions = useDimensions();
+export const MovieDetail = ({ movie = {}, navigation }) => {
+  const { width, scale } = useDimensions();
   const [movieIsBought, setMovieIsBought] = useState(false);
 
   useEffect(() => {
-    fetchMovie(movieId).then(movie => setMovie(movie));
     hasEntitlementForId(movie.id).then(setMovieIsBought);
   }, [movie]);
 
@@ -39,7 +35,7 @@ export const MovieDetail = ({ id, navigation }) => {
   return (
     <View style={styles.container}>
       <Image
-        style={{ flex: 1, height: dimensions.window.height / 3 }}
+        style={{ flex: 1, height: ( width * 652 / 980 ) / scale }}
         resizeMode="contain"
         source={{ uri: movie.poster }}
       />
