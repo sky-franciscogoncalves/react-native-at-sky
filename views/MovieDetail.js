@@ -5,6 +5,7 @@ import { Button } from './Button';
 import { purchaseMovie, hasEntitlementForId } from '../services/purchaseMovie';
 import { fetchPlayout } from '../services/fetchPlayout';
 import { AppConstants } from '../data/AppConstants.web';
+import { Colors } from '../styles/colors';
 
 export const TitleValueText = ({ title, value }) => (
   <View style={styles.titleValueTextContainer}>
@@ -65,28 +66,28 @@ const styles = StyleSheet.create({
   movieInfoContainer: {
     flex: 1,
     flexDirection: 'column',
-    marginHorizontal: 16,
+    marginHorizontal: 16
   },
   titleValueTextContainer: {
     flexDirection: 'row',
     marginBottom: 16
   },
   titleText: {
-    color: 'black',
+    color: Colors.text,
     width: 100
   },
   valueText: {
     flex: 1,
     flexWrap: 'wrap',
-    color: 'black'
+    color: Colors.text
   },
   movieTitle: {
-    color: 'black',
+    color: Colors.text,
     fontSize: 25,
     flexShrink: 2
   },
   text: {
-    color: 'black',
+    color: Colors.text,
     marginBottom: 16
   }
 });

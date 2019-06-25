@@ -3,6 +3,7 @@ import { StyleSheet, Text, FlatList, TouchableWithoutFeedback, View, Image } fro
 import { fetchMovies } from '../services/fetchMovies';
 import { useDimensions } from '../hooks/useDimensions';
 import { AppConstants } from '../data/AppConstants';
+import { Colors } from '../styles/colors';
 const arrow = require('../assets/arrow.png');
 
 export const TitleValueText = ({ title, value }) => (
@@ -48,7 +49,7 @@ const styles = StyleSheet.create({
     alignContent: 'center'
   },
   movieTitle: {
-    color: 'black',
+    color: Colors.text,
     fontSize: 18
   },
   arrow: {

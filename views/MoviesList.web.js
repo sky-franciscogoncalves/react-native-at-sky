@@ -11,14 +11,18 @@ export const MoviesList = ({ navigation }) => {
   }, []);
 
   return (
-    <View style={{
-      display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
-      gridRowGap: '10px',
-      gridColumnGap: '10px',
-      backgroundColor: '#fff',
-    }}>
-      {movies.map((movie) => <MoviesListItem key={movie.id} movie={movie} navigation={navigation} />)}
+    <View
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
+        gridRowGap: '10px',
+        gridColumnGap: '10px',
+        backgroundColor: Colors.background
+      }}
+    >
+      {movies.map(movie => (
+        <MoviesListItem key={movie.id} movie={movie} navigation={navigation} />
+      ))}
     </View>
   );
 };
