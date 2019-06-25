@@ -6,7 +6,7 @@ import { fetchMovie } from '../services/fetchMovies';
 import Loading from '../views/Loading';
 
 export const MovieDetailScreen = ({ navigation }) => {
-  const [movie, setMovie] = useState(undefined);
+  const [movie, setMovie] = useState(navigation.getParam('movie'));
 
   useEffect(() => {
     fetchMovie(navigation.getParam('id')).then(movie => {

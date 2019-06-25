@@ -15,7 +15,7 @@ export const TitleValueText = ({ title, value }) => (
 
 export const MoviesListItem = ({ movie, navigation }) => {
   const { height, width, scale } = useDimensions();
-  const onPress = () => navigation.navigate('MovieDetail', { id: movie.id });
+  const onPress = () => navigation.navigate('MovieDetail', { id: movie.id, movie: movie });
 
   return (
     <TouchableWithoutFeedback onPress={onPress}>

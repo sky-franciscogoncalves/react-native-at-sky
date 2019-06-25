@@ -17,6 +17,7 @@ export const TitleValueText = ({ title, value }) => (
 export const MovieDetail = ({ movie = {}, navigation }) => {
   const { width, scale } = useDimensions();
   const [movieIsBought, setMovieIsBought] = useState(false);
+  const [movieIsBeingPurchased, setMovieIsBeingPurchased] = useState(false);
 
   useEffect(() => {
     hasEntitlementForId(movie.id).then(setMovieIsBought);
@@ -26,8 +27,11 @@ export const MovieDetail = ({ movie = {}, navigation }) => {
     if (movieIsBought) {
       navigation.navigate('MoviePlayer', { id: movie.id });
     } else {
+      setMovieIsBeingPurchased(true);
       await purchaseMovie(movie.id);
-      hasEntitlementForId(movie.id).then(setMovieIsBought);
+      const hasEntitlement = await hasEntitlementForId(movie.id);
+      setMovieIsBought(hasEntitlement);
+      setMovieIsBeingPurchased(false);
     }
   };
 
@@ -41,7 +45,7 @@ export const MovieDetail = ({ movie = {}, navigation }) => {
       <View style={styles.movieInfoContainer}>
         <View style={styles.titleBuyContainer}>
           <Text style={styles.movieTitle}>{movie.title}</Text>
-          <Button text={movieIsBought ? 'Play' : 'Buy'} onPress={onPress} />
+          <Button text={movieIsBought ? 'Play' : 'Buy'} isLoading={movieIsBeingPurchased} onPress={onPress} />
         </View>
         <TitleValueText title="Genre" value={movie.genre && movie.genre.join(', ')} />
         <TitleValueText title="Directors" value={movie.directors} />

@@ -12,7 +12,7 @@ export const purchaseMovie = async movieId => {
   try {
     const moviesBought = JSON.parse(await AsyncStorage.getItem(MOVIES_BOUGHT_KEY)) || [];
     moviesBought.push(movieId);
-    return AsyncStorage.setItem(MOVIES_BOUGHT_KEY, JSON.stringify([...new Set(moviesBought).then(randomDelay())]));
+    return AsyncStorage.setItem(MOVIES_BOUGHT_KEY, JSON.stringify([...new Set(moviesBought)])).then(randomDelay());
   } catch (error) {
     return Promise.reject(error);
   }

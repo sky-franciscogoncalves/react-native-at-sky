@@ -1,10 +1,11 @@
 import React from 'react';
 import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Colors } from '../styles/colors';
+import Loading from './Loading';
 
-export const Button = ({ text, onPress }) => (
+export const Button = ({ text, onPress, isLoading }) => (
   <TouchableOpacity style={styles.container} onPress={onPress}>
-    <Text style={styles.text}>{text}</Text>
+    {isLoading ? <Loading /> : <Text style={styles.text}>{text}</Text>}
   </TouchableOpacity>
 );
 
