@@ -13,7 +13,7 @@ import {
 } from 'react-navigation';
 import { createBrowserApp } from '@react-navigation/web';
 import { Colors } from './styles/colors';
-import { Font } from 'expo';
+import * as Font from 'expo-font';
 
 Font.loadAsync({
   'sf-pro-text-thin': require('./assets/SF-Pro-Text-Thin.otf'),
