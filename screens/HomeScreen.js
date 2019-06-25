@@ -24,8 +24,5 @@ export const HomeScreen = ({ navigation }) => {
 };
 
 HomeScreen.navigationOptions = {
-  title: Platform.select({
-    web: 'Universal Studios',
-    default: 'Home'
-  })
+  title: 'Universal Studios'
 };
