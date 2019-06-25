@@ -78,20 +78,25 @@ const styles = StyleSheet.create({
   },
   titleText: {
     color: Colors.text,
-    width: 100
+    width: 100,
+    fontFamily: 'sf-pro-text-thin',
+    fontSize: 16
   },
   valueText: {
     flex: 1,
     flexWrap: 'wrap',
-    color: Colors.text
+    color: Colors.text,
+    fontFamily: 'sf-pro-text-light'
   },
   movieTitle: {
     color: Colors.text,
     fontSize: 25,
-    flexShrink: 2
+    flexShrink: 2,
+    fontFamily: 'sf-pro-text-regular'
   },
   text: {
     color: Colors.text,
-    marginBottom: 16
+    marginBottom: 16,
+    fontFamily: 'sf-pro-text-light'
   }
 });

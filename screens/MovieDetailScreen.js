@@ -30,10 +30,11 @@ export const MovieDetailScreen = ({ navigation }) => {
 
 MovieDetailScreen.navigationOptions = ({ navigation }) => {
   const title = navigation.getParam('title');
+  const movie = navigation.getParam('movie');
   return {
     title: Platform.select({
       web: 'Universal Studios',
-      default: title
+      default: movie && movie.title
     })
   };
 };

@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 18,
-    color: Colors.button
+    color: Colors.button,
+    fontFamily: 'sf-pro-text-light'
   }
 });

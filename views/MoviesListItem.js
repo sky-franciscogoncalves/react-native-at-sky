@@ -50,7 +50,8 @@ const styles = StyleSheet.create({
   },
   movieTitle: {
     color: Colors.text,
-    fontSize: 18
+    fontSize: 18,
+    fontFamily: 'sf-pro-text-regular'
   },
   arrow: {
     width: 16,

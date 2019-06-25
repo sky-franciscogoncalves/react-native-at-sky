@@ -13,6 +13,13 @@ import {
 } from 'react-navigation';
 import { createBrowserApp } from '@react-navigation/web';
 import { Colors } from './styles/colors';
+import { Font } from 'expo';
+
+Font.loadAsync({
+  'sf-pro-text-thin': require('./assets/SF-Pro-Text-Thin.otf'),
+  'sf-pro-text-light': require('./assets/SF-Pro-Text-Light.otf'),
+  'sf-pro-text-regular': require('./assets/SF-Pro-Text-Regular.otf')
+});
 
 const headerStyles = {
   defaultNavigationOptions: {
