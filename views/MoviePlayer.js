@@ -5,7 +5,10 @@ import { Video } from 'expo-av';
 export const MoviePlayer = ({ playoutURI }) => {
   if (Platform.OS === 'web') {
     return (
-      <video controls autoPlay style={{height: '100vh'}} >
+      <video controls autoPlay style={{
+        height: '100vh',
+        width: '100vw'
+      }} >
         <source src={playoutURI} type="video/mp4" />
       </video>
     );
