@@ -13,7 +13,7 @@ export const HomeScreen = ({ navigation }) => {
 
 HomeScreen.navigationOptions = {
   title: Platform.select({
-    web: 'Sky Cinema',
+    web: 'Universal Studios',
     default: 'Home'
   })
 };

@@ -27,7 +27,7 @@ MovieDetailScreen.navigationOptions = ({ navigation }) => {
   const title = navigation.getParam('title');
   return {
     title: Platform.select({
-      web: `Sky Cinema`,
+      web: 'Universal Studios',
       default: title
     })
   };
