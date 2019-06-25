@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, FlatList } from 'react-native';
 import { fetchMovies } from '../services/fetchMovies';
 import { MoviesListItem } from './MoviesListItem';
+import { Colors } from '../styles/colors';
 
 export const MoviesList = ({ navigation }) => {
   const [movies, setMovies] = useState([]);
