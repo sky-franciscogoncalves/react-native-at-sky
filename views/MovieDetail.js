@@ -65,8 +65,7 @@ const styles = StyleSheet.create({
   movieInfoContainer: {
     flex: 1,
     flexDirection: 'column',
-    flexWrap: 'wrap',
-    marginHorizontal: 16
+    marginHorizontal: 16,
   },
   titleValueTextContainer: {
     flexDirection: 'row',
