@@ -19,8 +19,8 @@ export const MoviesListItem = ({ movie, navigation }) => {
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.container}>
         <Image
-          style={{ flex: 1, height: 270 }}
-          resizeMode="contain"
+          style={{ flex: 1, height: 270, borderRadius: 10, boxShadow: '3px 3px 20px 2px rgba(0,0,0,0.2)' }}
+          resizeMode="cover"
           source={{ uri: movie.poster }}
         />
       </View>
