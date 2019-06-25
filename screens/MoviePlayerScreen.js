@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View } from 'react-native';
 import { MoviePlayer } from '../views/MoviePlayer';
+import { Loading } from '../views/Loading';
 import { BackgroundStyles } from './BackgroundStyles';
 import { fetchPlayout } from '../services/fetchPlayout';
 
@@ -13,7 +14,7 @@ export function MoviePlayerScreen({ navigation }) {
   }, [movieId])
 
   if (!playoutURI) {
-    return <Text>LOADING</Text>
+    return <Loading />;
   }
 
   return <View style={BackgroundStyles.container}><MoviePlayer playoutURI={playoutURI} /></View>;
