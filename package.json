@@ -6,7 +6,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web --non-interactive",
     "eject": "expo eject",
-    "start-avd": "./start-avd.sh"
+    "avd": "./start-avd.sh"
   },
   "dependencies": {
     "@react-navigation/web": "^1.0.0-alpha.9",
@@ -21,5 +21,6 @@
   "devDependencies": {
     "babel-preset-expo": "^5.0.0"
   },
-  "private": true
+  "private": true,
+  "license": "MIT"
 }

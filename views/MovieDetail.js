@@ -4,6 +4,7 @@ import { useDimensions } from '../hooks/useDimensions';
 import { Button } from './Button';
 import { purchaseMovie, hasEntitlementForId } from '../services/purchaseMovie';
 import { fetchPlayout } from '../services/fetchPlayout';
+import { AppConstants } from '../data/AppConstants.web';
 
 export const TitleValueText = ({ title, value }) => (
   <View style={styles.titleValueTextContainer}>
@@ -35,7 +36,7 @@ export const MovieDetail = ({ movie = {}, navigation }) => {
   return (
     <View style={styles.container}>
       <Image
-        style={{ flex: 1, height: ( width * 652 / 980 ) / scale }}
+        style={{ flex: 1, height: width * AppConstants.getAspectRatio(scale) }}
         resizeMode="contain"
         source={{ uri: movie.poster }}
       />

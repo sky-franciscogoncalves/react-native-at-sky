@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, FlatList, TouchableWithoutFeedback, View, Image } from 'react-native';
 import { fetchMovies } from '../services/fetchMovies';
 import { useDimensions } from '../hooks/useDimensions';
+import { AppConstants } from '../data/AppConstants';
+const arrow = require('../assets/arrow.png');
 
 export const TitleValueText = ({ title, value }) => (
   <View style={styles.titleValueTextContainer}>
@@ -11,21 +13,20 @@ export const TitleValueText = ({ title, value }) => (
 );
 
 export const MoviesListItem = ({ movie, navigation }) => {
-  const { height }= useDimensions();
-  const onPress = () =>
-    navigation.navigate('MovieDetail', { id: movie.id });
+  const { height, width, scale } = useDimensions();
+  const onPress = () => navigation.navigate('MovieDetail', { id: movie.id });
 
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.container}>
         <Image
-          style={{ flex: 1, height: height / 3 }}
+          style={{ flex: 1, width, height: width * AppConstants.getAspectRatio(scale) }}
           resizeMode="contain"
           source={{ uri: movie.poster }}
         />
         <View style={styles.movieInfoContainer}>
           <Text style={styles.movieTitle}>{movie.title}</Text>
-          <Text style={styles.arrow}> ＞ </Text>
+          <Image resizeMode="contain" style={styles.arrow} source={arrow} />
         </View>
       </View>
     </TouchableWithoutFeedback>
@@ -42,15 +43,16 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     marginHorizontal: 16,
+    marginTop: 8,
     justifyContent: 'space-between',
     alignContent: 'center'
   },
   movieTitle: {
     color: 'black',
-    fontSize: 23
+    fontSize: 18
   },
   arrow: {
-    color: 'black',
-    fontSize: 23
+    width: 16,
+    height: 16
   }
 });
