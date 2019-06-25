@@ -1,8 +1,16 @@
 import React from 'react';
-import { Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { Video } from 'expo-av';
 
 export const MoviePlayer = ({ playoutURI }) => {
+  if (Platform.OS === 'web') {
+    return (
+      <video controls autoPlay style={{height: '100vh'}} >
+        <source src={playoutURI} type="video/mp4" />
+      </video>
+    );
+  }
+
   return (
     <Video
       source={{ uri: playoutURI }}

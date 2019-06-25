@@ -23,10 +23,7 @@ export const MovieDetail = ({ movie = {}, navigation }) => {
 
   const onPress = async () => {
     if (movieIsBought) {
-      const playoutURI = await fetchPlayout(movie.id);
-      navigation.navigate('MoviePlayer', {
-        playoutURI
-      });
+      navigation.navigate('MoviePlayer', { id: movie.id });
     } else {
       await purchaseMovie(movie.id);
       hasEntitlementForId(movie.id).then(setMovieIsBought);
