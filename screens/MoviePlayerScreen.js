@@ -1,14 +1,22 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Text, View } from 'react-native';
 import { MoviePlayer } from '../views/MoviePlayer';
 import { BackgroundStyles } from './BackgroundStyles';
+import { fetchPlayout } from '../services/fetchPlayout';
 
-export class MoviePlayerScreen extends React.Component {
-  static navigationOptions = ({ navigation }) => {};
+export function MoviePlayerScreen({ navigation }) {
+  const movieId = navigation.getParam('id');
+  const [playoutURI, setPlayoutURI] = useState(undefined);
 
-  render() {
-    const playoutURI = this.props.navigation.getParam('playoutURI');
+  useEffect(() => {
+    setTimeout(() => fetchPlayout(movieId).then(setPlayoutURI), 1000);
+  }, [movieId])
 
-    return <View style={BackgroundStyles.container}>{<MoviePlayer playoutURI={playoutURI} />}</View>;
+  if (!playoutURI) {
+    return <Text>LOADING</Text>
   }
+
+  return <View style={BackgroundStyles.container}><MoviePlayer playoutURI={playoutURI} /></View>;
 }
+
+MoviePlayerScreen.navigationOptions = ({ navigation }) => {};

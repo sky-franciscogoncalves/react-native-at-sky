@@ -10,7 +10,9 @@ export const MovieDetailScreen = ({ navigation }) => {
   useEffect(() => {
     fetchMovie(navigation.getParam('id')).then(movie => {
       setMovie(movie);
-      navigation.setParams({ 'title': movie.title })
+      if (Platform.OS !== 'web') {
+        navigation.setParams({ 'title': movie.title })
+      }
     });
   }, [movie])
 
@@ -25,7 +27,7 @@ MovieDetailScreen.navigationOptions = ({ navigation }) => {
   const title = navigation.getParam('title');
   return {
     title: Platform.select({
-      web: `Sky Cinema - ${title}`,
+      web: `Sky Cinema`,
       default: title
     })
   };

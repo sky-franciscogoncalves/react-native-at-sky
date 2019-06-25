@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 import { useDimensions } from '../hooks/useDimensions';
 import { Button } from './Button';
 import { purchaseMovie, hasEntitlementForId } from '../services/purchaseMovie';
-import { fetchPlayout } from '../services/fetchPlayout';
 
 export const TitleValueText = ({ title, value }) => (
   <View style={styles.titleValueTextContainer}>
@@ -22,10 +21,7 @@ export const MovieDetail = ({ movie = {}, navigation }) => {
 
   const onPress = async () => {
     if (movieIsBought) {
-      const playoutURI = await fetchPlayout(movie.id);
-      navigation.navigate('MoviePlayer', {
-        playoutURI
-      });
+      navigation.navigate('MoviePlayer', { id: movie.id });
     } else {
       await purchaseMovie(movie.id);
       hasEntitlementForId(movie.id).then(setMovieIsBought);
