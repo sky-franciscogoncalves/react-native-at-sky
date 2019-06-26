@@ -1,3 +1,3 @@
 export const AppConstants = {
-  getAspectRatio: _ => 652 / 980
+  aspectRatio: 652 / 980
 };

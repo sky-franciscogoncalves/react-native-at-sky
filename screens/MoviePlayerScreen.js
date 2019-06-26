@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import { MoviePlayer } from '../views/MoviePlayer';
 import { Loading } from '../views/Loading';
 import { BackgroundStyles } from './BackgroundStyles';

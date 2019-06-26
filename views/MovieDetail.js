@@ -3,8 +3,7 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 import { useDimensions } from '../hooks/useDimensions';
 import { Button } from './Button';
 import { purchaseMovie, hasEntitlementForId } from '../services/purchaseMovie';
-import { fetchPlayout } from '../services/fetchPlayout';
-import { AppConstants } from '../data/AppConstants.web';
+import { AppConstants } from '../data/AppConstants';
 import { Colors } from '../styles/colors';
 import useCancellablePromise from '../hooks/useCancelablePromise';
 
@@ -16,7 +15,7 @@ export const TitleValueText = ({ title, value }) => (
 );
 
 export const MovieDetail = ({ movie = {}, navigation }) => {
-  const { width, scale } = useDimensions();
+  const { width } = useDimensions();
   const [movieIsBought, setMovieIsBought] = useState(false);
   const [movieIsBeingPurchased, setMovieIsBeingPurchased] = useState(false);
   const { cancellablePromise } = useCancellablePromise();
@@ -40,7 +39,7 @@ export const MovieDetail = ({ movie = {}, navigation }) => {
   return (
     <View style={styles.container}>
       <Image
-        style={{ flex: 1, height: width * AppConstants.getAspectRatio(scale) }}
+        style={{ flexGrow: 0, height: width * AppConstants.aspectRatio }}
         resizeMode="contain"
         source={{ uri: movie.poster }}
       />
@@ -70,8 +69,6 @@ const styles = StyleSheet.create({
     marginTop: 8
   },
   movieInfoContainer: {
-    flex: 1,
-    flexDirection: 'column',
     marginHorizontal: 16
   },
   titleValueTextContainer: {

@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { View, FlatList } from 'react-native';
-import { fetchMovies } from '../services/fetchMovies';
+import React from 'react';
+import { FlatList } from 'react-native';
 import { MoviesListItem } from './MoviesListItem';
-import Loading from './Loading';
 
 export const MoviesList = ({ navigation, movies }) => {
   const renderItem = ({ item }) => <MoviesListItem movie={item} navigation={navigation} />;
