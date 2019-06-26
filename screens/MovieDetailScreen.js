@@ -14,7 +14,7 @@ export const MovieDetailScreen = ({ navigation }) => {
   const { cancellablePromise } = useCancellablePromise();
 
   useEffect(() => {
-    cancellablePromise(hasEntitlementForId(movie.id).then(setMovieIsBought));
+    movie && cancellablePromise(hasEntitlementForId(movie.id).then(setMovieIsBought));
   }, [movie]);
 
   useEffect(() => {

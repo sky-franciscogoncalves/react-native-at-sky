@@ -1,18 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import React from 'react';
+import { Platform, StyleSheet, Text, View, Image } from 'react-native';
 import { useDimensions } from '../hooks/useDimensions';
 import { Button } from './Button';
 import { AppConstants } from '../data/AppConstants';
 import { Colors } from '../styles/colors';
 import { TitleValueText } from './TitleValueText';
+import { useMediaQuery } from '../hooks/useMediaQuery';
+import { useResponsiveStyles } from '../hooks/useResponsiveStyles';
 
 export const MovieDetail = ({ movie, movieIsBought, movieIsBeingPurchased, navigation, onPress }) => {
   const { width } = useDimensions();
+  const styles = useResponsiveStyles({ xs: xsStyles, lg: lgStyles });
 
   return (
     <View style={styles.container}>
       <Image
-        style={{ flexGrow: 0, height: width * AppConstants.aspectRatio }}
+        style={Platform.select({
+          web: styles.image,
+          default: [styles.image, { height: width * AppConstants.aspectRatio }]
+        })}
         resizeMode="contain"
         source={{ uri: movie.poster }}
       />
@@ -29,11 +35,7 @@ export const MovieDetail = ({ movie, movieIsBought, movieIsBeingPurchased, navig
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column'
-  },
+const commonStyles = StyleSheet.create({
   titleBuyContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -56,3 +58,40 @@ const styles = StyleSheet.create({
     fontFamily: 'sf-pro-text-light'
   }
 });
+
+const xsStyles = StyleSheet.flatten([
+  commonStyles,
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      flexDirection: 'column'
+    },
+    image: {
+      flexGrow: 0,
+      height: Platform.select({
+        web: `calc(100vw * ${AppConstants.aspectRatio})`,
+        default: undefined
+      })
+    },
+    movieInfoContainer: {
+      marginHorizontal: 16
+    }
+  })
+]);
+
+const lgStyles = StyleSheet.flatten([
+  commonStyles,
+  StyleSheet.create({
+    container: {
+      flexDirection: 'row'
+    },
+    movieInfoContainer: {
+      width: '50%',
+      padding: 20
+    },
+    image: {
+      width: '50%',
+      height: `calc(50vw * ${AppConstants.aspectRatio})`
+    }
+  })
+]);
