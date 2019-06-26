@@ -6,13 +6,7 @@ import { purchaseMovie, hasEntitlementForId } from '../services/purchaseMovie';
 import { AppConstants } from '../data/AppConstants';
 import { Colors } from '../styles/colors';
 import useCancellablePromise from '../hooks/useCancelablePromise';
-
-export const TitleValueText = ({ title, value }) => (
-  <View style={styles.titleValueTextContainer}>
-    <Text style={styles.titleText}>{`${title}:`}</Text>
-    <Text style={styles.valueText}>{value}</Text>
-  </View>
-);
+import { TitleValueText } from './TitleValueText';
 
 export const MovieDetail = ({ movie = {}, navigation }) => {
   const { width } = useDimensions();
@@ -70,22 +64,6 @@ const styles = StyleSheet.create({
   },
   movieInfoContainer: {
     marginHorizontal: 16
-  },
-  titleValueTextContainer: {
-    flexDirection: 'row',
-    marginBottom: 16
-  },
-  titleText: {
-    color: Colors.text,
-    width: 100,
-    fontFamily: 'sf-pro-text-thin',
-    fontSize: 16
-  },
-  valueText: {
-    flex: 1,
-    flexWrap: 'wrap',
-    color: Colors.text,
-    fontFamily: 'sf-pro-text-light'
   },
   movieTitle: {
     color: Colors.text,

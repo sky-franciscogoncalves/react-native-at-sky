@@ -5,13 +5,6 @@ import { AppConstants } from '../data/AppConstants';
 import { Colors } from '../styles/colors';
 const arrow = require('../assets/arrow.png');
 
-export const TitleValueText = ({ title, value }) => (
-  <View style={styles.titleValueTextContainer}>
-    <Text style={styles.titleText}>{`${title}:`}</Text>
-    <Text style={styles.valueText}>{value}</Text>
-  </View>
-);
-
 export const MoviesListItem = ({ movie, navigation }) => {
   const { width } = useDimensions();
   const onPress = () => navigation.navigate('MovieDetail', { id: movie.id, movie: movie });

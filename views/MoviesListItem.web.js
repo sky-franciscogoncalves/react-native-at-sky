@@ -1,16 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableWithoutFeedback, View, Image } from 'react-native';
 
-export const TitleValueText = ({ title, value }) => (
-  <View style={styles.titleValueTextContainer}>
-    <Text style={styles.titleText}>{`${title}:`}</Text>
-    <Text style={styles.valueText}>{value}</Text>
-  </View>
-);
-
 export const MoviesListItem = ({ movie, navigation }) => {
-  const onPress = () =>
-    navigation.navigate('MovieDetail', { id: movie.id });
+  const onPress = () => navigation.navigate('MovieDetail', { id: movie.id });
 
   return (
     <TouchableWithoutFeedback onPress={onPress}>
@@ -31,5 +23,5 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     marginVertical: 16,
     minWidth: 400
-  },
+  }
 });
