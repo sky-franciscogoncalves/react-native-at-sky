@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { View, FlatList } from 'react-native';
-import { fetchMovies } from '../services/fetchMovies';
+import React from 'react';
+import { View } from 'react-native';
 import { MoviesListItem } from './MoviesListItem';
 import { Colors } from '../styles/colors';
 

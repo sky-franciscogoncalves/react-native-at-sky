@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Platform, StyleSheet, View } from 'react-native';
+import { Platform, View } from 'react-native';
 import { MoviesList } from '../views/MoviesList';
 import { BackgroundStyles } from './BackgroundStyles';
 import Loading from '../views/Loading';

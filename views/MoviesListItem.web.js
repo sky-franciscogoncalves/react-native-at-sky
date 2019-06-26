@@ -1,7 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, FlatList, TouchableWithoutFeedback, View, Image } from 'react-native';
-import { fetchMovies } from '../services/fetchMovies';
-import { useDimensions } from '../hooks/useDimensions';
+import { StyleSheet, Text, TouchableWithoutFeedback, View, Image } from 'react-native';
 
 export const TitleValueText = ({ title, value }) => (
   <View style={styles.titleValueTextContainer}>
@@ -11,7 +9,6 @@ export const TitleValueText = ({ title, value }) => (
 );
 
 export const MoviesListItem = ({ movie, navigation }) => {
-  const { height }= useDimensions();
   const onPress = () =>
     navigation.navigate('MovieDetail', { id: movie.id });
 
