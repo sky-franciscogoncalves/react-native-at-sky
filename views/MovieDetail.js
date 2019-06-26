@@ -6,6 +6,7 @@ import { purchaseMovie, hasEntitlementForId } from '../services/purchaseMovie';
 import { fetchPlayout } from '../services/fetchPlayout';
 import { AppConstants } from '../data/AppConstants.web';
 import { Colors } from '../styles/colors';
+import useCancellablePromise from '../hooks/useCancelablePromise';
 
 export const TitleValueText = ({ title, value }) => (
   <View style={styles.titleValueTextContainer}>
@@ -18,9 +19,10 @@ export const MovieDetail = ({ movie = {}, navigation }) => {
   const { width, scale } = useDimensions();
   const [movieIsBought, setMovieIsBought] = useState(false);
   const [movieIsBeingPurchased, setMovieIsBeingPurchased] = useState(false);
+  const { cancellablePromise } = useCancellablePromise();
 
   useEffect(() => {
-    hasEntitlementForId(movie.id).then(setMovieIsBought);
+    cancellablePromise(hasEntitlementForId(movie.id).then(setMovieIsBought));
   }, [movie]);
 
   const onPress = async () => {
@@ -28,8 +30,8 @@ export const MovieDetail = ({ movie = {}, navigation }) => {
       navigation.navigate('MoviePlayer', { id: movie.id });
     } else {
       setMovieIsBeingPurchased(true);
-      await purchaseMovie(movie.id);
-      const hasEntitlement = await hasEntitlementForId(movie.id);
+      await cancellablePromise(purchaseMovie(movie.id));
+      const hasEntitlement = await cancellablePromise(hasEntitlementForId(movie.id));
       setMovieIsBought(hasEntitlement);
       setMovieIsBeingPurchased(false);
     }

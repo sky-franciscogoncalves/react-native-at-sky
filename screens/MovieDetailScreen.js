@@ -4,12 +4,14 @@ import { MovieDetail } from '../views/MovieDetail';
 import { BackgroundStyles } from './BackgroundStyles';
 import { fetchMovie } from '../services/fetchMovies';
 import Loading from '../views/Loading';
+import useCancellablePromise from '../hooks/useCancelablePromise';
 
 export const MovieDetailScreen = ({ navigation }) => {
   const [movie, setMovie] = useState(navigation.getParam('movie'));
+  const { cancellablePromise } = useCancellablePromise();
 
   useEffect(() => {
-    fetchMovie(navigation.getParam('id')).then(movie => {
+    cancellablePromise(fetchMovie(navigation.getParam('id'))).then(movie => {
       setMovie(movie);
       if (Platform.OS !== 'web') {
         navigation.setParams({ title: movie.title });

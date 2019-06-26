@@ -1,11 +1,15 @@
 import React from 'react';
-import { Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { ActivityIndicator, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Colors } from '../styles/colors';
 import Loading from './Loading';
 
 export const Button = ({ text, onPress, isLoading }) => (
   <TouchableOpacity style={styles.container} onPress={onPress}>
-    {isLoading ? <Loading /> : <Text style={styles.text}>{text}</Text>}
+    {isLoading ? (
+      <ActivityIndicator size="small" color={Colors.loadingSpinner} />
+    ) : (
+      <Text style={styles.text}>{text}</Text>
+    )}
   </TouchableOpacity>
 );
 
@@ -15,6 +19,7 @@ const styles = StyleSheet.create({
     borderColor: Colors.button,
     alignItems: 'center',
     justifyContent: 'center',
+    height: 44,
     borderRadius: 4,
     paddingHorizontal: 16,
     paddingVertical: 8

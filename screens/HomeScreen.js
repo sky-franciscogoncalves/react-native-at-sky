@@ -4,12 +4,14 @@ import { MoviesList } from '../views/MoviesList';
 import { BackgroundStyles } from './BackgroundStyles';
 import Loading from '../views/Loading';
 import { fetchMovies } from '../services/fetchMovies';
+import useCancellablePromise from '../hooks/useCancelablePromise';
 
 export const HomeScreen = ({ navigation }) => {
   const [movies, setMovies] = useState(undefined);
+  const { cancellablePromise } = useCancellablePromise();
 
   useEffect(() => {
-    fetchMovies().then(movies => setMovies(movies));
+    cancellablePromise(fetchMovies()).then(movies => setMovies(movies));
   }, []);
 
   if (!movies) {
