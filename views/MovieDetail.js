@@ -2,33 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { useDimensions } from '../hooks/useDimensions';
 import { Button } from './Button';
-import { purchaseMovie, hasEntitlementForId } from '../services/purchaseMovie';
 import { AppConstants } from '../data/AppConstants';
 import { Colors } from '../styles/colors';
-import useCancellablePromise from '../hooks/useCancelablePromise';
 import { TitleValueText } from './TitleValueText';
 
-export const MovieDetail = ({ movie = {}, navigation }) => {
+export const MovieDetail = ({ movie, movieIsBought, movieIsBeingPurchased, navigation, onPress }) => {
   const { width } = useDimensions();
-  const [movieIsBought, setMovieIsBought] = useState(false);
-  const [movieIsBeingPurchased, setMovieIsBeingPurchased] = useState(false);
-  const { cancellablePromise } = useCancellablePromise();
-
-  useEffect(() => {
-    cancellablePromise(hasEntitlementForId(movie.id).then(setMovieIsBought));
-  }, [movie]);
-
-  const onPress = async () => {
-    if (movieIsBought) {
-      navigation.navigate('MoviePlayer', { id: movie.id });
-    } else {
-      setMovieIsBeingPurchased(true);
-      await cancellablePromise(purchaseMovie(movie.id));
-      const hasEntitlement = await cancellablePromise(hasEntitlementForId(movie.id));
-      setMovieIsBought(hasEntitlement);
-      setMovieIsBeingPurchased(false);
-    }
-  };
 
   return (
     <View style={styles.container}>
