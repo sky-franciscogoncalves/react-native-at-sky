@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Platform, View } from 'react-native';
 import { MovieDetail } from '../views/MovieDetail';
-import { BackgroundStyles } from './BackgroundStyles';
+import { backgroundStyles } from '../styles/styles';
 import { fetchMovie } from '../services/fetchMovies';
 import { purchaseMovie, hasEntitlementForId } from '../services/purchaseMovie';
 import Loading from '../views/Loading';
@@ -43,7 +43,7 @@ export const MovieDetailScreen = ({ navigation }) => {
   }
 
   return (
-    <View style={BackgroundStyles.container}>
+    <View style={backgroundStyles.container}>
       <MovieDetail
         movie={movie}
         movieIsBought={movieIsBought}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View } from 'react-native';
 import { MoviePlayer } from '../views/MoviePlayer';
 import { Loading } from '../views/Loading';
-import { BackgroundStyles } from './BackgroundStyles';
+import { backgroundStyles } from '../styles/styles';
 import { fetchPlayout } from '../services/fetchPlayout';
 import useCancellablePromise from '../hooks/useCancelablePromise';
 
@@ -20,7 +20,7 @@ export function MoviePlayerScreen({ navigation }) {
   }
 
   return (
-    <View style={BackgroundStyles.container}>
+    <View style={backgroundStyles.container}>
       <MoviePlayer playoutURI={playoutURI} />
     </View>
   );

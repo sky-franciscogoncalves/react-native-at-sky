@@ -1,14 +1,12 @@
 import React from 'react';
-import { Platform, StyleSheet } from 'react-native';
+import { Platform } from 'react-native';
 import { Video } from 'expo-av';
+import { moviePlayerStyles as styles } from '../styles/styles';
 
 export const MoviePlayer = ({ playoutURI }) => {
   if (Platform.OS === 'web') {
     return (
-      <video controls autoPlay style={{
-        height: '100vh',
-        width: '100vw'
-      }} >
+      <video controls autoPlay style={styles.video}>
         <source src={playoutURI} type="video/mp4" />
       </video>
     );
@@ -28,9 +26,3 @@ export const MoviePlayer = ({ playoutURI }) => {
     />
   );
 };
-
-const styles = StyleSheet.create({
-  video: {
-    flex: 1
-  }
-});

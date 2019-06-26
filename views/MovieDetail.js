@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, StyleSheet, Text, View, Image } from 'react-native';
+import { Platform, Text, View, Image } from 'react-native';
 import { useDimensions } from '../hooks/useDimensions';
 import { Button } from './Button';
 import { AppConstants } from '../data/AppConstants';
@@ -7,6 +7,7 @@ import { Colors } from '../styles/colors';
 import { TitleValueText } from './TitleValueText';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import { useResponsiveStyles } from '../hooks/useResponsiveStyles';
+import { movieDetailsXsStyles as xsStyles, movieDetailsLgStyles as lgStyles } from '../styles/styles';
 
 export const MovieDetail = ({ movie, movieIsBought, movieIsBeingPurchased, navigation, onPress }) => {
   const { width } = useDimensions();
@@ -34,64 +35,3 @@ export const MovieDetail = ({ movie, movieIsBought, movieIsBeingPurchased, navig
     </View>
   );
 };
-
-const commonStyles = StyleSheet.create({
-  titleBuyContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 16,
-    alignItems: 'center',
-    marginTop: 8
-  },
-  movieInfoContainer: {
-    marginHorizontal: 16
-  },
-  movieTitle: {
-    color: Colors.text,
-    fontSize: 25,
-    flexShrink: 2,
-    fontFamily: 'sf-pro-text-regular'
-  },
-  text: {
-    color: Colors.text,
-    marginBottom: 16,
-    fontFamily: 'sf-pro-text-light'
-  }
-});
-
-const xsStyles = StyleSheet.flatten([
-  commonStyles,
-  StyleSheet.create({
-    container: {
-      flex: 1,
-      flexDirection: 'column'
-    },
-    image: {
-      flexGrow: 0,
-      height: Platform.select({
-        web: `calc(100vw * ${AppConstants.aspectRatio})`,
-        default: undefined
-      })
-    },
-    movieInfoContainer: {
-      marginHorizontal: 16
-    }
-  })
-]);
-
-const lgStyles = StyleSheet.flatten([
-  commonStyles,
-  StyleSheet.create({
-    container: {
-      flexDirection: 'row'
-    },
-    movieInfoContainer: {
-      width: '50%',
-      padding: 20
-    },
-    image: {
-      width: '50%',
-      height: `calc(50vw * ${AppConstants.aspectRatio})`
-    }
-  })
-]);
