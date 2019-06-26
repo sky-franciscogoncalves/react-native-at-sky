@@ -1,6 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, FlatList, TouchableWithoutFeedback, View, Image } from 'react-native';
-import { fetchMovies } from '../services/fetchMovies';
+import { StyleSheet, Text, TouchableWithoutFeedback, View, Image } from 'react-native';
 import { useDimensions } from '../hooks/useDimensions';
 import { AppConstants } from '../data/AppConstants';
 import { Colors } from '../styles/colors';
@@ -14,14 +13,14 @@ export const TitleValueText = ({ title, value }) => (
 );
 
 export const MoviesListItem = ({ movie, navigation }) => {
-  const { height, width, scale } = useDimensions();
+  const { width } = useDimensions();
   const onPress = () => navigation.navigate('MovieDetail', { id: movie.id, movie: movie });
 
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.container}>
         <Image
-          style={{ flex: 1, width, height: width * AppConstants.getAspectRatio(scale) }}
+          style={{ flex: 1, width, height: width * AppConstants.aspectRatio }}
           resizeMode="contain"
           source={{ uri: movie.poster }}
         />
