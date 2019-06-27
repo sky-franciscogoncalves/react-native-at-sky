@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform, StatusBar } from 'react-native';
 import { HomeScreen } from './screens/HomeScreen';
 import { MovieDetailScreen } from './screens/MovieDetailScreen';
 import { MoviePlayerScreen } from './screens/MoviePlayerScreen';
@@ -49,5 +49,7 @@ const routes = {
     path: 'movie/play/:id'
   }
 };
+
+StatusBar.setBarStyle("light-content")
 
 export default createApp(routes);
