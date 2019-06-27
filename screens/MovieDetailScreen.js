@@ -24,7 +24,7 @@ export const MovieDetailScreen = ({ navigation }) => {
         navigation.setParams({ title: movie.title });
       }
     });
-  }, [movie]);
+  }, []);
 
   const onPress = async () => {
     if (movieIsBought) {
