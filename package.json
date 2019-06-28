@@ -1,0 +1,28 @@
+{
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start --android --ios --web",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web --non-interactive",
+    "eject": "expo eject",
+    "avd": "./start-avd.sh"
+  },
+  "dependencies": {
+    "@expo/webpack-config": "^0.5.15",
+    "@react-navigation/web": "^1.0.0-alpha.9",
+    "expo": "^33.0.0",
+    "expo-av": "~5.0.0",
+    "expo-font": "~5.0.1",
+    "react": "16.8.3",
+    "react-dom": "^16.8.6",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
+    "react-native-web": "^0.11.4",
+    "react-navigation": "^3.11.0"
+  },
+  "devDependencies": {
+    "babel-preset-expo": "^5.0.0"
+  },
+  "private": true,
+  "license": "MIT"
+}
