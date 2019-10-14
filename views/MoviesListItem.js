@@ -7,12 +7,12 @@ import { isWeb } from '../utils/platform';
 
 const arrow = require('../assets/arrow.png');
 
-export const MoviesListItem = ({ movie }) => {
+export const MoviesListItem = ({ navigation, movie }) => {
   const { width } = useDimensions();
-  // const onPress = () => navigation.navigate('MovieDetail', { id: movie.id });
+  const onPress = () => navigation.navigate('MovieDetail', { id: movie.id });
 
   return (
-    <TouchableWithoutFeedback>
+    <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.container}>
         <Image
           style={Platform.select({

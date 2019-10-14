@@ -26,17 +26,19 @@ const headerStyles = {
   }
 };
 
-//web: routes => createBrowserApp(createSwitchNavigator(routes)),
-const createApp = screens => createAppContainer(createStackNavigator(screens, headerStyles));
+const createApp = Platform.select({
+  web: routes => createBrowserApp(createSwitchNavigator(routes)),
+  mobile: screens => createAppContainer(createStackNavigator(screens, headerStyles))
+});
 
 const routes = {
   Home: {
     screen: HomeScreen,
-    //path: '',
+    path: '',
   },
   MovieDetail: {
     screen: MovieDetailScreen,
-    //path: 'movie/:id'
+    path: 'movie/:id'
   },
 };
 
