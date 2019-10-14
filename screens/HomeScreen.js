@@ -26,5 +26,5 @@ export const HomeScreen = ({ navigation }) => {
 };
 
 HomeScreen.navigationOptions = {
-  title: 'Universal Studios'
+  title: 'Peacock'
 };

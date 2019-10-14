@@ -110,15 +110,13 @@ export const moviesListStyles = Platform.select({
 
 export const movieListItemStyles = StyleSheet.create(
   Platform.select({
+    /*
     web: {
       container: {
-        flex: 1,
-        flexDirection: 'column',
-        marginVertical: 16,
-        minWidth: 400
+        margin: 10
       },
-      image: { flex: 1, height: 270, borderRadius: 10, boxShadow: '3px 3px 20px 2px rgba(0,0,0,0.2)' }
     },
+    */
     default: {
       container: {
         flex: 1,

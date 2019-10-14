@@ -1,18 +1,22 @@
 import React from 'react';
-import { Text, TouchableWithoutFeedback, View, Image } from 'react-native';
+import { Platform, Text, TouchableWithoutFeedback, View, Image } from 'react-native';
 import { useDimensions } from '../hooks/useDimensions';
 import { AppConstants } from '../data/AppConstants';
-import { Colors } from '../styles/colors';
 import { movieListItemStyles as styles } from '../styles/styles';
+import { isWeb } from '../utils/platform';
+
+/*
+// Web styles!
+web: { borderRadius: 10, flex: 1, width: width / 3.5, height: width / 3.5 * AppConstants.aspectRatio},
+*/
 
 const arrow = require('../assets/arrow.png');
 
-export const MoviesListItem = ({ movie, navigation }) => {
+export const MoviesListItem = ({ movie }) => {
   const { width } = useDimensions();
-  const onPress = () => navigation.navigate('MovieDetail', { id: movie.id, movie: movie });
 
   return (
-    <TouchableWithoutFeedback onPress={onPress}>
+    <TouchableWithoutFeedback>
       <View style={styles.container}>
         <Image
           style={{ flex: 1, width, height: width * AppConstants.aspectRatio }}
