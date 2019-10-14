@@ -6,5 +6,5 @@ import { isWeb } from '../utils/platform';
 export const MoviesList = ({ movies }) => {
     const renderItem = ({ item }) => <MoviesListItem movie={item} />;
 
-    return <FlatList style={{ margin: 'auto' }} numColumns={1} data={movies} keyExtractor={m => m.id} renderItem={renderItem} />;
+    return <FlatList style={{ margin: 'auto' }} numColumns={isWeb ? 3 : 1} data={movies} keyExtractor={m => m.id} renderItem={renderItem} />;
 };

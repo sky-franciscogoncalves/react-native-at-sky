@@ -2,13 +2,9 @@ import React from 'react';
 import { Platform, StatusBar } from 'react-native';
 import { HomeScreen } from './screens/HomeScreen';
 import { MovieDetailScreen } from './screens/MovieDetailScreen';
-import { MoviePlayerScreen } from './screens/MoviePlayerScreen';
-1;
 import {
   createSwitchNavigator,
-  createDrawerNavigator,
   createAppContainer,
-  createMaterialTopTabNavigator,
   createStackNavigator
 } from 'react-navigation';
 import { createBrowserApp } from '@react-navigation/web';
@@ -30,24 +26,18 @@ const headerStyles = {
   }
 };
 
-const createApp = Platform.select({
-  web: routes => createBrowserApp(createSwitchNavigator(routes)),
-  default: screens => createAppContainer(createStackNavigator(screens, headerStyles))
-});
+//web: routes => createBrowserApp(createSwitchNavigator(routes)),
+const createApp = screens => createAppContainer(createStackNavigator(screens, headerStyles));
 
 const routes = {
   Home: {
     screen: HomeScreen,
-    path: ''
+    //path: '',
   },
   MovieDetail: {
     screen: MovieDetailScreen,
-    path: 'movie/:id'
+    //path: 'movie/:id'
   },
-  MoviePlayer: {
-    screen: MoviePlayerScreen,
-    path: 'movie/play/:id'
-  }
 };
 
 StatusBar.setBarStyle("light-content")

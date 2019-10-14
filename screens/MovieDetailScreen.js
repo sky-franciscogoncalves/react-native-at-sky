@@ -60,7 +60,7 @@ MovieDetailScreen.navigationOptions = ({ navigation }) => {
   const movie = navigation.getParam('movie');
   return {
     title: Platform.select({
-      web: 'Universal Studios',
+      web: 'Peacock',
       default: movie && movie.title
     })
   };

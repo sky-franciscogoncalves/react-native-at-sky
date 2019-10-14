@@ -110,13 +110,11 @@ export const moviesListStyles = Platform.select({
 
 export const movieListItemStyles = StyleSheet.create(
   Platform.select({
-    /*
     web: {
       container: {
         margin: 10
       },
     },
-    */
     default: {
       container: {
         flex: 1,
