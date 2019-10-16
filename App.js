@@ -28,7 +28,7 @@ const headerStyles = {
 
 const createApp = Platform.select({
   web: routes => createBrowserApp(createSwitchNavigator(routes)),
-  mobile: screens => createAppContainer(createStackNavigator(screens, headerStyles))
+  default: screens => createAppContainer(createStackNavigator(screens, headerStyles))
 });
 
 const routes = {

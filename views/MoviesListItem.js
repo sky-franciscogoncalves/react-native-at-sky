@@ -17,7 +17,7 @@ export const MoviesListItem = ({ navigation, movie }) => {
         <Image
           style={Platform.select({
             web: { borderRadius: 10, flex: 1, width: width / 3.5, height: width / 3.5 * AppConstants.aspectRatio},
-            mobile: { flex: 1, width, height: width * AppConstants.aspectRatio }
+            default: { flex: 1, width, height: width * AppConstants.aspectRatio }
           })}
           resizeMode="contain"
           source={{ uri: movie.poster }}
